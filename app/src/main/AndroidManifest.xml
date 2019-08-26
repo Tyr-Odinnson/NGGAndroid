@@ -9,6 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <activity android:name=".OptionsActivity"></activity>
+>>>>>>> parent of 33e59de... ..
 =======
         <activity android:name=".OptionsActivity"></activity>
 >>>>>>> parent of 33e59de... ..
