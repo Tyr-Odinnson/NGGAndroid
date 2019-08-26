@@ -1,6 +1,5 @@
 package com.vogella.android.nggandroid;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }
         });
+<<<<<<< HEAD
         Button instructionsButton = findViewById(R.id.instructionsButton);
         instructionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, PlayActivity.class));
+=======
+        Button optionsButton = findViewById(R.id.optionsButton);
+        optionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+>>>>>>> parent of 33e59de... ..
             }
         });
     }
