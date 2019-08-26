@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         Button instructionsButton = findViewById(R.id.instructionsButton);
         instructionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,12 +43,17 @@ public class MainActivity extends AppCompatActivity {
 =======
 =======
 >>>>>>> parent of 33e59de... ..
+=======
+>>>>>>> parent of 33e59de... ..
         Button optionsButton = findViewById(R.id.optionsButton);
         optionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 33e59de... ..
+=======
 >>>>>>> parent of 33e59de... ..
 =======
 >>>>>>> parent of 33e59de... ..
