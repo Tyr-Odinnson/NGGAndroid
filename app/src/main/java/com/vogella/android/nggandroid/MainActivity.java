@@ -1,5 +1,6 @@
 package com.vogella.android.nggandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,21 @@ public class MainActivity extends AppCompatActivity {
         optionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(MainActivity.this, OptionsActivity.class));
+            }
+        });
+        Button instructionsButton = findViewById(R.id.instructionsButton);
+        instructionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, InstructionsActivity.class));
+            }
+        });
+        Button playButton = findViewById(R.id.playButton);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PlayActivity.class));
             }
         });
     }
