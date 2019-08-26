@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,13 +25,6 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }
         });
-        Button optionsButton = findViewById(R.id.optionsButton);
-        optionsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, OptionsActivity.class));
-            }
-        });
         Button instructionsButton = findViewById(R.id.instructionsButton);
         instructionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, InstructionsActivity.class));
             }
         });
+
         Button playButton = findViewById(R.id.playButton);
-        playButton.setOnClickListener(new View.OnClickListener() {
+        instructionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, PlayActivity.class));
