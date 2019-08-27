@@ -1,7 +1,10 @@
 package com.vogella.android.nggandroid;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
+import static android.graphics.Color.BLACK;
 import static android.view.Gravity.CENTER_HORIZONTAL;
 import static android.view.Gravity.TOP;
 
@@ -59,7 +63,13 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         numberOfTries++;
 
         if (n == numberToGuess) {
-            Toast.makeText(this, "Yuss!!! You got it right, congratulations!", Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(this, "Yuss!!! You got it right, congratulations!", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER_VERTICAL,0,0);
+                    TextView v = toast.getView().findViewById(android.R.id.message);
+                    View view = toast.getView();
+                    view.getBackground().setColorFilter(BLACK, PorterDuff.Mode.SRC_IN);
+                    v.setTextColor(Color.CYAN);
+                    toast.show();
             newGame();
         } else if (n > numberToGuess){
             msgTv.setText(R.string.too_high);
