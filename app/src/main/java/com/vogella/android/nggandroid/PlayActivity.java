@@ -11,14 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
 import static android.graphics.Color.BLACK;
-import static android.view.Gravity.CENTER_HORIZONTAL;
-import static android.view.Gravity.TOP;
 
 
 public class PlayActivity extends AppCompatActivity implements View.OnClickListener {

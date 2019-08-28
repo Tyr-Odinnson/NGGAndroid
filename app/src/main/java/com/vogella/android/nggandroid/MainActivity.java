@@ -1,16 +1,25 @@
 package com.vogella.android.nggandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.graphics.Color.BLACK;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,13 +31,18 @@ public class MainActivity extends AppCompatActivity {
     private TextToSpeech tts;
     private MediaPlayer mediaPlayer;
     private ImageButton soundButton;
+    private SharedPreferences preferences;
     private boolean isPlaying = true;
+    private boolean soundOn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         playButton = findViewById(R.id.playButton);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+
 
         mediaPlayer = MediaPlayer.create(this, R.raw.aeris_theme);
         mediaPlayer.setLooping(true);
@@ -81,12 +95,12 @@ public class MainActivity extends AppCompatActivity {
                 if(isPlaying)
                 {
                     soundButton.setImageResource(R.drawable.ic_sound_off);
-                 //   tts.speak("The sound is off", TextToSpeech.QUEUE_FLUSH, null); //
+                 //   tts.speak("The sound is off", TextToSpeech.QUEUE_FLUSH, null);
                     mediaPlayer.pause();
                 } else {
                     soundButton.setImageResource(R.drawable.ic_sound_on);
-
-                 //   tts.speak("The sound is on!", TextToSpeech.QUEUE_FLUSH, null); //
+                    mediaPlayer.start();
+                 //   tts.speak("The sound is on!", TextToSpeech.QUEUE_FLUSH, null);
                 }
                 isPlaying = !isPlaying;
             }
@@ -96,8 +110,40 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart(){
         super.onStart();
+
+        String username = preferences.getString("Username", "Anonymous");
+
+        Toast toast = Toast.makeText(this, "Hello " + username, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER_VERTICAL,0,0);
+        TextView v = toast.getView().findViewById(android.R.id.message);
+        View view = toast.getView();
+        view.getBackground().setColorFilter(BLACK, PorterDuff.Mode.SRC_IN);
+        v.setTextColor(Color.CYAN);
+        toast.show();
         exitButton.startAnimation(fadinAnimation);
         playButton.startAnimation(flyinAnimation);
-        mediaPlayer.start();
+        soundOn = preferences.getBoolean("sound", true);
+        if(soundOn)
+        {
+            mediaPlayer.start();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(isPlaying){
+            mediaPlayer.pause();
+
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+            mediaPlayer = null;
+        }
     }
 }
