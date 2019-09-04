@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".InstructionsActivity"></activity>
+        <activity
+            android:name=".OptionsActivity"
+            android:label="@string/title_activity_options"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.vogella.android.nggandroid.MainActivity" />
+        </activity>
+        <activity android:name=".InstructionsActivity" />
         <activity android:name=".PlayActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
